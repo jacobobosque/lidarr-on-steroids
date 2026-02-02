@@ -19,3 +19,5 @@ services:
       - /mnt/appdata/lidarr:/config
       - /mnt/appdata/deemix:/config_deemix
       - /mnt/data:/data
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
