@@ -1,0 +1,21 @@
+version: '3.4'
+
+services:
+  lidarr:
+    image: youegraillot/lidarr-on-steroids
+    container_name: lidarr
+    restart: unless-stopped
+    #build:
+      #context: .
+    environment:
+      #- FLAC2CUSTOM_ARGS=-a "-vn -c:a libopus -b:a 64k" -e .opus -r '\.mp3$$'
+      - PUID=0
+      - PGID=0
+      - TZ=America/Monterrey
+    ports:
+      - "8686:8686" # Lidarr web UI
+      - "6595:6595" # Deemix web UI
+    volumes:
+      - /mnt/appdata/lidarr:/config
+      - /mnt/appdata/deemix:/config_deemix
+      - /mnt/data:/data
